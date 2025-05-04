@@ -1,6 +1,7 @@
 from pages.accordion import Accordion
 import time
 
+
 def test_visible_accordion(browser):
     accordion = Accordion(browser)
     accordion.visit()
