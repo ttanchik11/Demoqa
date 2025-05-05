@@ -8,18 +8,6 @@ class BasePage:
     def visit(self):
         return self.driver.get(self.base_url)
 
-    def get_url(self):
-        return self.driver.current_url
-
-    def equal_url(self):
-        if self.get_url() == self.base_url:
-            return True
-        else:
-            return False
-
-    def get_text(self):
-        return self.get_text()
-
     def back(self):
         return self.driver.back()
 
@@ -32,3 +20,17 @@ class BasePage:
 
     def get_title(self):
         return self.driver.title
+    
+    def get_url(self):
+        return self.driver.current_url
+
+    def equal_url(self):
+        if self.get_url() == self.base_url:
+            return True
+        else:
+            return False
+
+    def get_text(self):
+        return self.get_text()
+
+
