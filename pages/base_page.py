@@ -21,7 +21,6 @@ class BasePage:
     def get_text(self):
         return self.get_text()
 
-
     def back(self):
         return self.driver.back()
 

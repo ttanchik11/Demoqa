@@ -18,7 +18,6 @@ class WebElement:
 
     def exist(self):
         try:
-
             self.find_element()
         except NoSuchElementException:
             return False
