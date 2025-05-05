@@ -12,5 +12,6 @@ def test_visible_accordion(browser):
 def test_visible_accordion_default(browser):
     accordion = Accordion(browser)
     accordion.visit()
+
     assert not accordion.section2_content.visible()
     assert not accordion.section3_content.visible()

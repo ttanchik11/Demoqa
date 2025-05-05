@@ -8,7 +8,6 @@ class WebElement:
         self.locator = locator
         self.driver = driver
 
-
     def click(self):
         """ Click the element"""
         self.find_element().click()

@@ -9,7 +9,7 @@ def test_visible_btn_sidebar(browser):
     # time.sleep(3)
     # assert elements_page.btn_sidebar_first_texbox.exist()
     assert elements_page.btn_sidebar_first_texbox.visible()  #проверка что элемент виден
-    #assert not elements_page.btn_sidebar_first_texbox.visible() #проверка что элемент не виден
+    #assert not elements_page.btn_sidebar_first_texbox.visible() #проверка что элемент не виде
 
 def test_not_visible_btn_sidebar(browser):
     elements_page = ElementsPage(browser)

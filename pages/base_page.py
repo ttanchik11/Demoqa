@@ -8,7 +8,6 @@ class BasePage:
     def visit(self):
         return self.driver.get(self.base_url)
 
-
     def get_url(self):
         return self.driver.current_url
 

@@ -20,6 +20,5 @@ def test_check_text_elements_please(browser):
 def test_page_elements(browser):
     elements_page = ElementsPage(browser)
     elements_page.visit()
-
     assert elements_page.icon.exist()
     assert elements_page.btn_sidebar_first.exist()
