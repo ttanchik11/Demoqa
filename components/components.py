@@ -59,10 +59,12 @@ class WebElement:
 
     def send_keys(self, text: str):
         self.find_element().send_keys(text)
+        self.find_element().send_keys(Keys.ENTER)  # выбрать
 
     def clear(self):
         self.find_element().send_keys(Keys.CONTROL + "a") #выделить все
         self.find_element().send_keys(Keys.DELETE) #удалить выделенное
+
 
     def get_dom_attribute(self, name: str):
         value = self.find_element().get_dom_attribute(name)
@@ -84,3 +86,6 @@ class WebElement:
 
     def is_name_displayed_correctly(self, name):
         return f"Name:{name}" in self.output_name.get_text()
+
+    def check_css(self, style, value=''):
+        return self.find_element().value_of_css_property(style) == value

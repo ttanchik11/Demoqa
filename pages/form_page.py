@@ -18,3 +18,9 @@ class FormPage(BasePage):
         self.hobbies_checkbox_1 = WebElement(driver, '#hobbies-checkbox-1')
         self.current_address = WebElement(driver, '#currentAddress')
         self.form_novalidate = WebElement(driver, '#userForm')
+
+        self.state_dropdown = WebElement(driver, '#state')
+        self.btn_NCR = WebElement(driver, "//*[contains(text(), 'NCR')]", 'xpath')  # Опция "NCR"
+        self.city_dropdown = WebElement(driver, '#city')
+        self.btn_Delhi = WebElement(driver, '//div[text()="Delhi"]', 'xpath')  # Опция "Delhi"
+

@@ -21,19 +21,24 @@ def test_login_form(browser):
     assert form_page.modal_dialog.exist()
     form_page.bnt_close_modale.click_force()
 
-    #выбор города в выпадашке
-    # state_dropdown = wait.until(EC.element_to_be_clickable((By.ID, "state")))
-    # ActionChains(driver).move_to_element(state_dropdown).click().perform()
-    #
-    # # Выбор конкретного штата (например, "NCR")
-    # state_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[text()='NCR']")))
-    # state_option.click()
-    #
-    # # Выбор City
-    # city_dropdown = wait.until(EC.element_to_be_clickable((By.ID, "city")))
-    # ActionChains(driver).move_to_element(city_dropdown).click().perform()
-    #
-    # # Выбор конкретного города (например, "Delhi")
-    # city_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[text()='Delhi']")))
-    # city_option.click()
+def test_state(browser):
+    form_page = FormPage(browser)
+    form_page.visit()
+    time.sleep(3)
 
+    # form_page.state_dropdown.scroll_to_element()
+    # time.sleep(3)
+    # form_page.btn_NCR.send_keys("NCR")
+    # form_page.state_dropdown.send_keys(Keys.ENTER)
+    # time.sleep(3)
+    # form_page.city_dropdown.click()
+    # form_page.btn_Delhi.send_keys("Delhi")
+    # form_page.state_dropdown.send_keys(Keys.ENTER)
+
+    form_page.state_dropdown.scroll_to_element()
+    form_page.state_dropdown.click_force()
+    form_page.btn_NCR.click_force()
+    time.sleep(2)
+
+    form_page.city_dropdown.click_force()
+    form_page.state_option_ncr.select_city("Delhi")
