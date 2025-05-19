@@ -8,4 +8,26 @@ class Webtables(BasePage):
         super().__init__(driver, self.base_url)
 
         self.no_rows_found = WebElement (driver, 'div.rt-noData')
-        self.btn_delete - WebElement (driver, "//span[@title='Delete']")
+        self.btn_delete = WebElement (driver, "//span[@title='Delete']")
+        self.btn_add = WebElement (driver, '#addNewRecordButton')
+
+        self.modal = WebElement(driver, 'div.modal-content')
+        self.first_name = WebElement(driver, '#firstName')
+        self.last_name = WebElement(driver, '#lastName')
+        self.email = WebElement(driver, '#userEmail')
+        self.age = WebElement(driver, '#age')
+        self.salary = WebElement(driver, '#salary')
+        self.department = WebElement(driver, '#department')
+        self.btn_submit = WebElement(driver, '#submit')
+
+        self.rows = WebElement(driver, 'div.rt-tbody > div.rt-tr-group')
+        self.edit_btn = WebElement(driver, 'span[title="Edit"]')
+
+    def fill_form(self, user_data):
+        """Заполняет форму данными из словаря"""
+        self.first_name.send_keys(user_data["first_name"])
+        self.last_name.send_keys(user_data["last_name"])
+        self.email.send_keys(user_data["email"])
+        self.age.send_keys(user_data["age"])
+        self.salary.send_keys(user_data["salary"])
+        self.department.send_keys(user_data["department"])

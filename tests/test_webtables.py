@@ -1,5 +1,3 @@
-import time
-
 from pages.webtables import Webtables
 import time
 
