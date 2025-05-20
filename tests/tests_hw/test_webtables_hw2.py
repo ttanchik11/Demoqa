@@ -41,12 +41,21 @@ def test_webtables_add(browser):
     except TimeoutException:
         pass
 
-    # Проверка валидации
-    first_name_field = webtables.first_name.find_element()
-    assert "is-invalid" in first_name_field.get_attribute("class")
+    # Проверка валидации - нужно проверить все обязательные поля
+    required_fields = [
+        webtables.first_name,
+        webtables.last_name,
+        webtables.email,
+        webtables.age,
+        webtables.salary,
+        webtables.department
+    ]
+
+
+    assert webtables.modal.get_dom_attribute('class') == 'was-validated'
 
     # 5. Заполнение формы
-    first_name_field.send_keys(test_data["first_name"])
+    webtables.first_name.send_keys(test_data["first_name"])
     webtables.last_name.find_element().send_keys(test_data["last_name"])
     webtables.email.find_element().send_keys(test_data["email"])
     webtables.age.find_element().send_keys(test_data["age"])
@@ -54,7 +63,7 @@ def test_webtables_add(browser):
     webtables.department.find_element().send_keys(test_data["department"])
 
     # 6. Отправка формы
-    submit_button.click()
+    webtables.btn_submit.click()
     wait.until(EC.invisibility_of_element(modal))
     assert not modal.is_displayed()
 

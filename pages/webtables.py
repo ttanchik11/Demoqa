@@ -11,7 +11,7 @@ class Webtables(BasePage):
         self.btn_delete = WebElement (driver, "//span[@title='Delete']")
         self.btn_add = WebElement (driver, '#addNewRecordButton')
 
-        self.modal = WebElement(driver, 'div.modal-content')
+        self.modal = WebElement(driver, 'body > div.fade.modal.show > div > div > div.modal-body')
         self.first_name = WebElement(driver, '#firstName')
         self.last_name = WebElement(driver, '#lastName')
         self.email = WebElement(driver, '#userEmail')

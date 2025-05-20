@@ -7,5 +7,5 @@ class KoupAdd(BasePage):
         self.base_url = 'https://the-internet.herokuapp.com/add_remove_elements/'
         super().__init__(driver, self.base_url)
 
-        self.btn_add = WebElement(driver, '#content > div > button')
+        self.btn_add = WebElement(driver, "#content > div > button")
         self.btns_delete = WebElement(driver, 'button.added-manually')

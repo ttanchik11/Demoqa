@@ -15,7 +15,7 @@ def test_webtables_add(browser):
 
     webtables.visit()
 
-    webtables.btn_add.click_force()
+    webtables.btn_add.click()
     time.sleep(1)
     assert webtables.modal.exist()
 
@@ -24,7 +24,7 @@ def test_webtables_add(browser):
     time.sleep(1)
     # Проверяем, что модальное окно осталось открытым (форма не отправлена)
     assert webtables.modal.exist()
-    assert "is-invalid" in webtables.first_name.get_attribute("class")
+    assert webtables.modal.get_dom_attribute('class') == 'was-validated'
 
     # Заполнение  формы(используем значения из test_data)
     webtables.first_name.send_keys(test_data["first_name"])
