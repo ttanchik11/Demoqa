@@ -12,11 +12,8 @@ def test_webtables_add(browser):
     }
     webtables = Webtables(browser)
     webtables.visit()
-
-    # Получаем количество строк до добавления
-    initial_count = webtables.get_rows_count()
-    print(f"Начальное количество строк: {initial_count}")
-
+    assert webtables.equal_url()
+    time.sleep(1)
     webtables.btn_add.click()
     time.sleep(1)
     assert webtables.modal.exist()
@@ -27,7 +24,7 @@ def test_webtables_add(browser):
     # Проверяем, что модальное окно осталось открытым (форма не отправлена)
     assert webtables.modal.exist()
 
-    # Заполнение  формы(используем значения из test_data)
+    # Заполнение формы(используем значения из test_data)
     webtables.first_name.send_keys(test_data["first_name"])
     webtables.last_name.send_keys(test_data["last_name"])
     webtables.email.send_keys(test_data["email"])
@@ -36,17 +33,22 @@ def test_webtables_add(browser):
     webtables.department.send_keys(test_data["department"])
 
     webtables.btn_submit.click()
+    time.sleep(3)
 
-# Проверяем, что модальное окно закрылось (форма отправлена)
+    # Проверяем, что модальное окно закрылось (форма отправлена)
     assert not webtables.modal.exist()
     time.sleep(3)
 
-# ii. Проверяем, что в таблицу добавилась новая запись
-    time.sleep(1)  # Даём время на обновление таблицы
-    new_count = webtables.get_rows_count()
-    print(f"Количество строк после добавления: {new_count}")
-    assert new_count == initial_count + 1, \
-        f"Ожидалось {initial_count + 1} строк, получено {new_count}"
+    # ii. Проверить, что в таблицу добавилась новая запись
+    webtables.input_search.input_text("John")
+    time.sleep(2)
+
+    rows = webtables.rows  # Получаем свежие элементы
+    assert len(rows) == 1
+
+
+
+
 
 # e. Кликаем на карандаш (редактирование)
     # webtables.edit_btn.click()

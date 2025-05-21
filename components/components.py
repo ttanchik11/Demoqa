@@ -65,6 +65,10 @@ class WebElement:
         self.find_element().send_keys(Keys.CONTROL + "a") #выделить все
         self.find_element().send_keys(Keys.DELETE) #удалить выделенное
 
+    def input_text(self, text: str) -> None:
+        """Вводит текст в поле поиска."""
+        self.find_element().clear()  # Очищаем поле (если нужно)
+        self.find_element().send_keys(text)
 
     def get_dom_attribute(self, name: str):
         value = self.find_element().get_dom_attribute(name)
