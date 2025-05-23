@@ -31,6 +31,13 @@ class Webtables(BasePage):
         self.edit_btn = WebElement(driver, "span[title='Edit']")
         self.btn_delete = WebElement(driver, "span[title='Delete']")
 
+        self.first_name_column_header = WebElement(driver,"div.rt-th:nth-child(1)")
+        self.last_name_column_header = WebElement(driver,"div.rt-th:nth-child(2)")
+        self.age_column_header = WebElement(driver,"div.rt-th:nth-child(3)")
+        self.email_column_header = WebElement(driver,"div.rt-th:nth-child(4)")
+        self.salary_column_header = WebElement(driver,"div.rt-th:nth-child(5)")
+        self.department_column_header = WebElement(driver,"div.rt-th:nth-child(6)")
+
     def fill_form(self, user_data):
         """Заполняет форму данными из словаря"""
         self.first_name.send_keys(user_data["first_name"])

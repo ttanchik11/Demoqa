@@ -1,10 +1,12 @@
 from selenium.webdriver.common.by import By
+from components.components import WebElement
 import logging
 
 class BasePage:
     def __init__(self, driver, base_url):
         self.driver = driver
         self.base_url = base_url #'https://demoqa.com/'
+        self.viewport = WebElement(driver, 'head > meta')
 
     def visit(self):
         return self.driver.get(self.base_url)

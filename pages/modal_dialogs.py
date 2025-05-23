@@ -9,3 +9,5 @@ class ModalDialogs(BasePage):
 
         self.btns_sidebar_second = WebElement(driver, "div.element-list.collapse.show ul > li")
         self.icon_main = WebElement(driver, "#app > header > a > img")
+        self.small_modal_btn = WebElement(driver, '#showSmallModal')
+        self.large_modal_btn = WebElement(driver, '#showLargeModal')
