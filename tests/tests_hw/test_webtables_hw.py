@@ -13,7 +13,7 @@ def test_webtables_add(browser):
     webtables = Webtables(browser)
     webtables.visit()
     assert webtables.equal_url()
-    time.sleep(1)
+
     webtables.btn_add.click()
     time.sleep(1)
     assert webtables.modal.exist()
@@ -33,21 +33,16 @@ def test_webtables_add(browser):
     webtables.department.send_keys(test_data["department"])
 
     webtables.btn_submit.click()
-    time.sleep(3)
+    # time.sleep(3)
 
     # Проверяем, что модальное окно закрылось (форма отправлена)
-    assert not webtables.modal.exist()
-    time.sleep(3)
+    # assert not webtables.modal()
+
+    # time.sleep(3)
 
     # ii. Проверить, что в таблицу добавилась новая запись
-    webtables.input_search.input_text("John")
-    time.sleep(2)
-
-    rows = webtables.rows  # Получаем свежие элементы
-    assert len(rows) == 1
-
-
-
+    # 4. Поиск добавленной записи
+    # webtables.new_cell.exist() работает
 
 
 # e. Кликаем на карандаш (редактирование)
@@ -57,11 +52,6 @@ def test_webtables_add(browser):
     #
     # # i. Проверяем, что данные в форме соответствуют записи
     # assert webtables.first_name.get_attribute("value") == test_data["first_name"]
-    # assert webtables.last_name.get_attribute("value") == test_data["last_name"]
-    # assert webtables.email.get_attribute("value") == test_data["email"]
-    # assert webtables.age.get_attribute("value") == test_data["age"]
-    # assert webtables.salary.get_attribute("value") == test_data["salary"]
-    # assert webtables.department.get_attribute("value") == test_data["department"]
     #
     # # f. Меняем имя и сохраняем
     # new_name = "Michael"

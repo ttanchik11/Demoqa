@@ -20,6 +20,7 @@ class Webtables(BasePage):
         self.btn_submit = WebElement(driver, "#submit")
 
         self.input_search = WebElement(driver, "#searchBox")
+        self.new_cell = WebElement(driver, "#edit-record-4 > svg")
 
         self.table = WebElement(driver, 'div.rt-tbody')  # локатор табличного поля
         # строки таблицы без пустых
@@ -43,3 +44,8 @@ class Webtables(BasePage):
         self.salary.send_keys(user_data["salary"])
         self.department.send_keys(user_data["department"])
 
+    # def search_by_name(self, name: str):
+    #     """Вводит текст в поле поиска"""
+    #     self.input_search.clear()
+    #     self.input_search.send_keys(name)
+    #     time.sleep(1)
