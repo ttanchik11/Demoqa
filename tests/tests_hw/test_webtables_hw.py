@@ -30,35 +30,52 @@ def test_webtables_add(browser):
     webtables.email.send_keys(test_data["email"])
     webtables.age.send_keys(test_data["age"])
     webtables.salary.send_keys(test_data["salary"])
-    webtables.department.send_keys(test_data["department"])
+    webtables.department.input_text(test_data["department"])
+    time.sleep(2)
 
     webtables.btn_submit.click()
-    # time.sleep(3)
+    time.sleep(2)
 
     # Проверяем, что модальное окно закрылось (форма отправлена)
-    # assert not webtables.modal()
-
-    # time.sleep(3)
+    assert not webtables.modal.exist()
+    time.sleep(2)
 
     # ii. Проверить, что в таблицу добавилась новая запись
-    # 4. Поиск добавленной записи
-    # webtables.new_cell.exist() работает
+    table_text = webtables.table.get_text()
+
+    for key, value in test_data.items():
+        assert value in table_text, f"Значение {value} ({key}) не найдено в таблице"
 
 
 # e. Кликаем на карандаш (редактирование)
-    # webtables.edit_btn.click()
-    # time.sleep(2)
-    # assert webtables.modal.exist()
-    #
-    # # i. Проверяем, что данные в форме соответствуют записи
-    # assert webtables.first_name.get_attribute("value") == test_data["first_name"]
-    #
-    # # f. Меняем имя и сохраняем
-    # new_name = "Michael"
-    # webtables.first_name.clear()
-    # webtables.first_name.send_keys(new_name)
-    # webtables.btn_submit.click()
-    # time.sleep(2)
+    webtables.input_search.send_keys("John")
+    time.sleep(2)
+
+    # Проверяем, что запись найдена и кнопка редактирования доступна
+    assert webtables.edit_btn.exist()
+    webtables.edit_btn.click()
+    time.sleep(2)
+
+    # Проверяем, что модальное окно редактирования открылось
+    assert webtables.modal.exist()
+
+    webtables.first_name.input_text('Tanya')
+    webtables.btn_submit.click()
+
+    table_text = webtables.table.get_text()
+
+    assert "Tanya" in table_text, "Имя 'Tanya' не найдено в таблице"
+
+    webtables.btn_delete.click()
+    time.sleep(2)
+
+    # 4. Проверяем что запись удалилась
+    table_text = webtables.table.get_text()
+
+    assert not "Tanya" in table_text
+    print("записи нет")
+
+
     #
     # # Проверяем, что имя обновилось в таблице
     # updated_rows = webtables.rows.get_elements()

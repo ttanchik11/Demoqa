@@ -19,20 +19,16 @@ class Webtables(BasePage):
         self.department = WebElement(driver, "#department")
         self.btn_submit = WebElement(driver, "#submit")
 
+        # Поиск и таблица
         self.input_search = WebElement(driver, "#searchBox")
-        self.new_cell = WebElement(driver, "#edit-record-4 > svg")
-
-        self.table = WebElement(driver, 'div.rt-tbody')  # локатор табличного поля
-        # строки таблицы без пустых
-        self.rows = WebElement(driver, "div.rt-tbody > div.rt-tr:not(.-padRow)")
+        self.table = WebElement(driver, 'div.rt-tbody')
+        self.rows = WebElement(driver, "div.rt-tr-group:not(.-padRow)")  # Группы строк
+        self.cells = WebElement(driver, "div.rt-td")  # Все ячейки
 
         # Добавляем локатор для ячеек
         self.row_cells = WebElement(driver, "div.rt-td")
-        # ячейки конкретной строки
-        self.cells_in_row = WebElement(driver, "div.rt-tr-group:not(.-padRow) > div.rt-tr > div.rt-td")
 
         self.edit_btn = WebElement(driver, "span[title='Edit']")
-        self.no_rows_found = WebElement(driver, "div.rt-noData")
         self.btn_delete = WebElement(driver, "span[title='Delete']")
 
     def fill_form(self, user_data):
